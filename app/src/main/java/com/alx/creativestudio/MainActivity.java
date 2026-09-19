@@ -132,7 +132,10 @@ public class MainActivity extends Activity {
         @JavascriptInterface public String getSharedLibraryInfo() {
             File shared = new File(getFilesDir(), "alx_shared");
             String[] files = shared.list();
-            return files == null ? "[]" : new org.json.JSONArray(files).toString();
+            if (files == null) return "[]";
+            org.json.JSONArray array = new org.json.JSONArray();
+            for (String file : files) array.put(file);
+            return array.toString();
         }
 
         @JavascriptInterface public void saveUnifiedProject(String json) {
