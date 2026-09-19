@@ -1,0 +1,42 @@
+{
+  "suite": "ALX Creative Design Studio",
+  "schemaVersion": 2,
+  "projectFormats": [
+    "ALX",
+    "ALX3D"
+  ],
+  "sharedLibraries": [
+    "assets",
+    "materials",
+    "fonts",
+    "images",
+    "models"
+  ],
+  "modules": [
+    "drawing",
+    "photo",
+    "logos",
+    "advertising",
+    "animation2d",
+    "architecture",
+    "interiors",
+    "exteriors",
+    "modeling3d",
+    "characters",
+    "cosplay",
+    "render"
+  ],
+  "bridge": {
+    "import2DInto3D": true,
+    "exportRenderToCreative": true,
+    "sharedAssetMetadata": true,
+    "creativeCanvasTo3DTexture": true,
+    "creativeCanvasTo3DDecal": true,
+    "sharedLibraryDiscovery": true,
+    "render3DToEditableCreativeLayer": true,
+    "unified2D3DProject": true
+  },
+  "fusionVersion": "5.3",
+  "sharedAssetStore": "internal/alx_shared",
+  "unifiedProjectFormat": "ALX-CREATIVE-DESIGN"
+}
