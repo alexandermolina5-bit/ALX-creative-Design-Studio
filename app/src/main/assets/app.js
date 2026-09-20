@@ -137,7 +137,25 @@ ensureLayers();renderDocPanels();scheduleAutosave();
 function openALX3D(){if(window.AndroidFiles&&AndroidFiles.open3DStudio){AndroidFiles.open3DStudio()}else{toast('El módulo 3D requiere la aplicación Android fusionada')}}
 const open3DNav=document.getElementById('open3DNav');if(open3DNav)open3DNav.onclick=openALX3D;
 const open3DCard=document.getElementById('open3DCard');if(open3DCard)open3DCard.onclick=openALX3D;
-\n// ALX Creative Design Studio 5.1 — intercambio editable 2D -> 3D y biblioteca compartida\nfunction sendCanvasTo3D(canvas,name='recurso-creative',kind='image'){\n  if(!canvas)return toast('No hay contenido para enviar');\n  if(window.AndroidFiles&&AndroidFiles.sendCreativeAssetTo3D){AndroidFiles.sendCreativeAssetTo3D(canvas.toDataURL('image/png'),name,kind);return}\n  toast('La transferencia 2D → 3D requiere la app Android fusionada');\n}\nwindow.ALXShared={sendCanvasTo3D};\nif($('saveDrawing')){const old=$('saveDrawing').onclick;$('saveDrawing').onclick=()=>{old&&old();setTimeout(()=>{if(confirm('¿Enviar también este dibujo a Diseño 3D como textura/referencia?'))sendCanvasTo3D(dc,'dibujo-alx','texture')},100)}}\nif($('downloadLogo')){const old=$('downloadLogo').onclick;$('downloadLogo').onclick=()=>{old&&old();setTimeout(()=>{if(confirm('¿Enviar este logo a Diseño 3D?'))sendCanvasTo3D(lc,'logo-alx','decal')},100)}}\nif($('downloadPhoto')){const old=$('downloadPhoto').onclick;$('downloadPhoto').onclick=()=>{old&&old();if(photo)setTimeout(()=>{if(confirm('¿Enviar esta imagen editada a Diseño 3D como textura?'))sendCanvasTo3D(pc,'fotografia-alx','texture')},100)}}\n
+// ALX Creative Design Studio 5.1 — intercambio editable 2D -> 3D y biblioteca compartida
+function sendCanvasTo3D(canvas,name='recurso-creative',kind='image'){
+  if(!canvas)return toast('No hay contenido para enviar');
+  if(window.AndroidFiles&&AndroidFiles.sendCreativeAssetTo3D){AndroidFiles.sendCreativeAssetTo3D(canvas.toDataURL('image/png'),name,kind);return}
+  toast('La transferencia 2D → 3D requiere la app Android fusionada');
+}
+window.ALXShared={sendCanvasTo3D};
+if($('saveDrawing')){
+  const old=$('saveDrawing').onclick;
+  $('saveDrawing').onclick=()=>{old&&old();setTimeout(()=>{if(confirm('¿Enviar también este dibujo a Diseño 3D como textura/referencia?'))sendCanvasTo3D(dc,'dibujo-alx','texture')},100)};
+}
+if($('downloadLogo')){
+  const old=$('downloadLogo').onclick;
+  $('downloadLogo').onclick=()=>{old&&old();setTimeout(()=>{if(confirm('¿Enviar este logo a Diseño 3D?'))sendCanvasTo3D(lc,'logo-alx','decal')},100)};
+}
+if($('downloadPhoto')){
+  const old=$('downloadPhoto').onclick;
+  $('downloadPhoto').onclick=()=>{old&&old();if(photo)setTimeout(()=>{if(confirm('¿Enviar esta imagen editada a Diseño 3D como textura?'))sendCanvasTo3D(pc,'fotografia-alx','texture')},100)};
+}
 
 // ALX Creative Design Studio 5.2 — retorno 3D -> 2D como capa editable
 window.import3DRenderAsLayer=function(dataUrl,name='Render 3D'){
